@@ -40,6 +40,6 @@ jobs:
 
   task3:
     runs-on: ubuntu-latest
-    need: task1
+    needs: task1
     steps:
       - run: npm run test:e2e:ci
