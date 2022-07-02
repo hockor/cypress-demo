@@ -1,0 +1,37 @@
+# 定义任务语义化名字
+name: demo
+
+# on 是触发条件
+on:
+  # git push的时候
+  push:
+    branches:
+      - dev
+    # 本次 push 的改动包含下面路径的代码时候才会触发，其他情况下不会（比如改下 readme）
+    paths:
+      - '.github/workflows/**'
+      - '__test__/**'
+      - 'src/**'
+# 定义执行的任务
+jobs:
+  test:
+    # 执行的环境基础，这里基于 Ubuntu
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2 # 就相当于git pull，第三方的 actions
+      - name: Use Node.js
+        uses: actions/setup-node@v1 # 安装 nodejs ，也是用的第三方的 actions
+        with:
+          node-version: 16 # 传了个版本进去
+      - name: lint
+        # 多个 run 的话用 | 开始，然后每个写一行
+        run: |
+          npm i
+          npm run lint
+    test2:
+      runs-on: ubuntu-latest
+      steps:
+        - run: touch a.txt
+        - run: echo 100 > a.txt
+        - run: cat a.txt
