@@ -29,9 +29,10 @@ jobs:
         run: |
           npm i
           npm run lint
-    task2:
-      runs-on: ubuntu-latest
-      steps:
-        - run: touch a.txt
-        - run: echo 100 > a.txt
-        - run: cat a.txt
+
+  task2:
+    runs-on: ubuntu-latest
+    steps:
+      - run: touch a.txt
+      - run: echo 100 > a.txt
+      - run: cat a.txt
