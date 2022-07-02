@@ -6,6 +6,8 @@ interface HelloWorldProps {
   msg: string;
 }
 
+const name = "hockor";
+
 export default function HelloWorld(props: HelloWorldProps) {
   const [count, setCount] = useState(0);
 
